@@ -28,31 +28,52 @@ ShowModelSelectionMenuEx(playerid, items_array[], item_amount, header_text[], ex
 
 ## Example:
 
-List.txt
+SkinsList.txt
+
+`modelid "text" Float:RotationX Float:RotationY Float:RotationZ Float:Room`
 ```txt
 1 [ModelID]
 2 [ModelID]
 ```
 
+VehList.txt
+
+`modelid "text" Float:RotationX Float:RotationY Float:RotationZ Float:Room`
+```txt
+400 [VehicleName] 1.000000 1.000000 1.000000
+401 [VehicleName] 2.000000 2.000000 2.000000
+```
+
 gamemode.pwn
 ```pawn
-new List;
+new SkinsList, VehList;
 public OnGameModeInit()	{
-	List = LoadModelSelectionMenu("list.txt"); // (scriptfiles/list.txt)
+	SkinsList = LoadModelSelectionMenu("SkinsList.txt"); // (scriptfiles/SkinsList.txt)
+	VehList = LoadModelSelectionMenu("VehList.txt");
 	return 1;
 }
 
-public OnPlayerConnect(playerid) {
-	ShowModelSelectionMenu(playerid, List, "Danh sach blabla");
+ShowSkinsListForPlayer(playerid) {
+	ShowModelSelectionMenu(playerid, SkinsList, "Danh sach skin");
+	return 1;
+}
+
+ShowVehListForPlayer(playerid) {
+	ShowModelSelectionMenu(playerid, VehList, "Danh sach phuong tien");
 	return 1;
 }
 
 public OnPlayerModelSelection(playerid, response, listid, modelid) {
-	if(listid == List) {
+	if(listid == SkinsList) {
 		if(response) {
 			SetPlayerSkin(playerid, modelid);
+			// code
 		}
-		else Kick(playerid);
+	}
+	if(listid == VehList) {
+		if(response) {
+			// code
+		}
 	}
 }
 ```
