@@ -4,8 +4,10 @@
 - Support dynamic player textdraw
 - Custom text above model sprite
 
+## Images
 ![Image](https://i.imgur.com/qR4qREp.png)
 
+## Include
 Include UmSelection in gamemode easily using it:
 
 ```pawn
@@ -42,8 +44,8 @@ VehList.txt
 
 `modelid "text" Float:RotationX Float:RotationY Float:RotationZ Float:Room`
 ```txt
-400 [VehicleName] 1.000000 1.000000 1.000000
-401 [VehicleName] 2.000000 2.000000 2.000000
+400 [VehicleName] 1.000000 1.000000 1.000000 1.0
+401 [VehicleName] 2.000000 2.000000 2.000000 1.0
 ```
 
 gamemode.pwn
