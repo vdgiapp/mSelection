@@ -13,10 +13,10 @@ Include UmSelection in gamemode easily using it:
 ## Functions
 
 ```pawn
-LoadModelSelectionMenu(f_name[])
-HideModelSelectionMenu(playerid)
-ShowModelSelectionMenu(playerid, ListID, header_text[], dialogBGcolor, previewBGcolor, tdSelectionColor)
-ShowModelSelectionMenuEx(playerid, items_array[], item_amount, header_text[], extraid, Xrot, Yrot, Zrot, mZoom, dialogBGcolor, previewBGcolor, tdSelectionColor)
+LoadModelSelectionMenu(f_name[]);
+HideModelSelectionMenu(playerid);
+ShowModelSelectionMenu(playerid, ListID, header_text[], dialogBGcolor, previewBGcolor, tdSelectionColor);
+ShowModelSelectionMenuEx(playerid, items_array[], item_amount, header_text[], extraid, Xrot, Yrot, Zrot, mZoom, dialogBGcolor, previewBGcolor, tdSelectionColor);
 ```
 
 ## Callbacks
