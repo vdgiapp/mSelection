@@ -4,7 +4,7 @@
 - Support dynamic player textdraw
 - Custom text above model sprite
 
-<img src="[/path/to/img.jpg](https://i.imgur.com/qR4qREp.png)" alt="Image" title="">
+![Image](https://i.imgur.com/qR4qREp.png)
 
 Include UmSelection in gamemode easily using it:
 
