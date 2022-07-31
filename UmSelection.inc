@@ -8,39 +8,6 @@
 	Version 1.1 R3 - Upgraded
 */
 
-/*
-	////////////////////////////////// Functions to be used:
-
-	LoadModelSelectionMenu(f_name[])
-	HideModelSelectionMenu(playerid)
-	ShowModelSelectionMenu(playerid, ListID, header_text[], dialogBGcolor, previewBGcolor, tdSelectionColor)
-	ShowModelSelectionMenuEx(playerid, items_array[], item_amount, header_text[], extraid, Xrot, Yrot, Zrot, mZoom, dialogBGcolor, previewBGcolor, tdSelectionColor)
-	
-
-	////////////////////////////////// Example: 
-	
-	new List;
-	public OnGameModeInit()	{
-		List = LoadModelSelectionMenu("list.txt"); // (scriptfiles/list.txt)
-		return 1;
-	}
-
-	public OnPlayerConnect(playerid) {
-		ShowModelSelectionMenu(playerid, List, "Danh sach blabla");
-		return 1;
-	}
-
-	public OnPlayerModelSelection(playerid, response, listid, modelid) {
-		if(listid == List) {
-			if(response) {
-				SetPlayerSkin(playerid, modelid);
-			}
-			else Kick(playerid);
-		}
-	}
-
-*/
-
 #if defined _SCRIPT_UNLIMITED_TEXTDRAW_
 	#define OnPlayerClickPTD OnPlayerClickDynamicTextdraw
 #else
