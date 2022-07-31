@@ -34,6 +34,7 @@ List.txt
 2 [ModelID]
 ```
 
+gamemode.pwn
 ```pawn
 new List;
 public OnGameModeInit()	{
