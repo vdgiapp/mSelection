@@ -28,6 +28,12 @@ ShowModelSelectionMenuEx(playerid, items_array[], item_amount, header_text[], ex
 
 ## Example:
 
+List.txt
+```txt
+1 [ModelID]
+2 [ModelID]
+```
+
 ```pawn
 new List;
 public OnGameModeInit()	{
