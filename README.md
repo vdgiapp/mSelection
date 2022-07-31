@@ -8,7 +8,7 @@
 ![Image](https://i.imgur.com/qR4qREp.png)
 
 ## Include
-Include UmSelection in gamemode easily using it:
+Include UmSelection in your gamemode and easily using it:
 
 ```pawn
 #include <UmSelection>
