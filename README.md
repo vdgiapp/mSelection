@@ -38,6 +38,7 @@ SkinsList.txt
 ```txt
 1 [ModelID]
 2 [ModelID]
+5 CustomText
 ```
 
 VehList.txt
