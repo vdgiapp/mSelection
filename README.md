@@ -51,6 +51,10 @@ VehList.txt
 
 gamemode.pwn
 ```pawn
+#include <a_samp>
+#include <UmSelection>
+#include <Pawn.CMD>
+
 new SkinsList, VehList;
 public OnGameModeInit()	{
 	SkinsList = LoadModelSelectionMenu("SkinsList.txt"); // (scriptfiles/SkinsList.txt)
@@ -58,12 +62,12 @@ public OnGameModeInit()	{
 	return 1;
 }
 
-ShowSkinsListForPlayer(playerid) {
+cmd:skinlist(playerid, params[]) {
 	ShowModelSelectionMenu(playerid, SkinsList, "Danh sach skin");
 	return 1;
 }
 
-ShowVehListForPlayer(playerid) {
+cmd:vehlist(playerid, params[]) {
 	ShowModelSelectionMenu(playerid, VehList, "Danh sach phuong tien");
 	return 1;
 }
