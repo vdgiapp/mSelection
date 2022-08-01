@@ -1,11 +1,11 @@
 
 /*
-	Upgraded Model Selection include - by Giapp
+	Upgraded Model Selection include
 
 	Model Selection using previews. For SA-MP 0.3x and above.
 	- D0erfler 2013
 	- Kye 2013
-	Version 1.1 R3 - Upgraded
+	Version 1.1 R3 - Upgraded by Giapp
 */
 
 #if defined _SCRIPT_UNLIMITED_TEXTDRAW_
