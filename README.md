@@ -34,7 +34,7 @@ Include UmSelection in your gamemode and easily using it:
 
 SkinsList.txt
 
-`modelid text[] Float:RotationX Float:RotationY Float:RotationZ Float:Room`
+`modelid text[] Float:RotationX Float:RotationY Float:RotationZ Float:Zoom`
 ```txt
 1 [ModelID]
 2 [ModelID]
@@ -43,7 +43,7 @@ SkinsList.txt
 
 VehList.txt
 
-`modelid text[] Float:RotationX Float:RotationY Float:RotationZ Float:Room`
+`modelid text[] Float:RotationX Float:RotationY Float:RotationZ Float:Zoom`
 ```txt
 400 [VehicleName] 1.000000 1.000000 1.000000 1.0
 401 [VehicleName] 2.000000 2.000000 2.000000 1.0
