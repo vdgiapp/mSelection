@@ -1,17 +1,16 @@
-# Upgraded mSelection 
+# mSelection - Upgraded by Giapp
 - New UI
 - Same to mSelection
-- Support dynamic player textdraw
-- Custom text above model sprite
+- Support [samp-textdraw-streamer](https://github.com/nexquery/samp-textdraw-streamer)
 
 ## Images
 ![Image](https://i.imgur.com/qR4qREp.png)
 
 ## Include
-Include UmSelection in your gamemode and easily using it:
+Include mSelection.inc in your gamemode and easily using it:
 
 ```pawn
-#include <UmSelection>
+#include <mSelection>
 ```
 
 ## Functions
@@ -31,6 +30,8 @@ Include UmSelection in your gamemode and easily using it:
 ```
 
 ## Example:
+[ModelID] = "ID: 1"...
+[VehicleName] = "NRG-500"...
 
 SkinsList.txt
 
