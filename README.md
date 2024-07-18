@@ -1,6 +1,6 @@
 # mSelection - Upgraded by Giapp
-- New UI
-- Same to mSelection
+- Same to mSelection but new UI and custom text
+- Support [open.mp](https://github.com/openmultiplayer/open.mp)
 - Support [samp-textdraw-streamer](https://github.com/nexquery/samp-textdraw-streamer)
 
 ## Images
@@ -53,7 +53,8 @@ VehList.txt
 gamemode.pwn
 ```pawn
 #include <a_samp>
-#include <UmSelection>
+#include <textdraw-streamer>
+#include <mSelection>
 #include <Pawn.CMD>
 
 new SkinsList, VehList;
@@ -64,25 +65,26 @@ public OnGameModeInit()	{
 }
 
 cmd:skinlist(playerid, params[]) {
-	ShowModelSelectionMenu(playerid, SkinsList, "Danh sach skin");
+	ShowModelSelectionMenu(playerid, SkinsList, "Skins list title");
 	return 1;
 }
 
 cmd:vehlist(playerid, params[]) {
-	ShowModelSelectionMenu(playerid, VehList, "Danh sach phuong tien");
+	ShowModelSelectionMenu(playerid, VehList, "Vehicles list title");
 	return 1;
 }
 
 public OnPlayerModelSelection(playerid, response, listid, modelid) {
 	if(listid == SkinsList) {
 		if(response) {
-			SetPlayerSkin(playerid, modelid);
-			// code
+			// set player skin or something
+			// or your work
 		}
 	}
 	if(listid == VehList) {
 		if(response) {
-			// code
+                        // create a vehicle or something
+			// or your work
 		}
 	}
 }
