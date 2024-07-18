@@ -8,11 +8,7 @@
 	Version 1.1 R3 - Upgraded by Giapp
 */
 
-#if defined _SCRIPT_UNLIMITED_TEXTDRAW_
-	#define OnPlayerClickPTD OnPlayerClickDynamicTextdraw
-#else
-	#define OnPlayerClickPTD OnPlayerClickPlayerTextDraw
-#endif
+#tryinclude <YSI_Coding\y_hooks>
 
 static mS_VehicleName[212][] = {
    "Landstalker",  "Bravura",  "Buffalo", "Linerunner", "Perennial", "Sentinel",
@@ -158,12 +154,12 @@ stock PlayerText:mS_CreateCurrentPageTextDraw(playerid, Float:Xpos, Float:Ypos)
 {
 	new PlayerText:txtInit;
    	txtInit = CreatePlayerTextDraw(playerid, Xpos, Ypos, "0/0");
-   	PlayerTextDrawUseBox(playerid, txtInit, 0);
+   	PlayerTextDrawUseBox(playerid, txtInit, false);
 	PlayerTextDrawLetterSize(playerid, txtInit, 0.4, 1.5);
-	PlayerTextDrawFont(playerid, txtInit, 1);
+	PlayerTextDrawFont(playerid, txtInit, TEXT_DRAW_FONT_1);
 	PlayerTextDrawSetShadow(playerid, txtInit, 0);
     PlayerTextDrawSetOutline(playerid, txtInit, 0);
-    PlayerTextDrawColor(playerid, txtInit, 1296911871);
+    PlayerTextDrawColour(playerid, txtInit, 1296911871);
     PlayerTextDrawShow(playerid, txtInit);
     return txtInit;
 }
@@ -171,21 +167,21 @@ stock PlayerText:mS_CreateCurrentPageTextDraw(playerid, Float:Xpos, Float:Ypos)
 //------------------------------------------------
 // Creates a button textdraw and returns the textdraw ID.
 
-stock PlayerText:mS_CreatePlayerDialogButton(playerid, Float:Xpos, Float:Ypos, Float:Width, Float:Height, const button_text[], bcolor = 0x000000FF, tcolor = 0xFFFFFFFF)
+stock PlayerText:mS_CreatePlayerDialogButton(playerid, Float:Xpos, Float:Ypos, Float:Width, Float:Height, const button_text[], bColour = 0x000000FF, tColour = 0xFFFFFFFF)
 {
  	new PlayerText:txtInit;
  	static btn_text[128]; format(btn_text, sizeof btn_text, "%s", button_text);
    	txtInit = CreatePlayerTextDraw(playerid, Xpos, Ypos, btn_text);
-   	PlayerTextDrawUseBox(playerid, txtInit, 1);
-   	PlayerTextDrawBoxColor(playerid, txtInit, bcolor);
-   	PlayerTextDrawBackgroundColor(playerid, txtInit, bcolor);
+   	PlayerTextDrawUseBox(playerid, txtInit, true);
+   	PlayerTextDrawBoxColour(playerid, txtInit, bColour);
+   	PlayerTextDrawBackgroundColour(playerid, txtInit, bColour);
 	PlayerTextDrawLetterSize(playerid, txtInit, 0.3, 1.1);
-	PlayerTextDrawFont(playerid, txtInit, 1);
+	PlayerTextDrawFont(playerid, txtInit, TEXT_DRAW_FONT_1);
 	PlayerTextDrawSetShadow(playerid, txtInit, 0); // no shadow
     PlayerTextDrawSetOutline(playerid, txtInit, 0);
-    PlayerTextDrawColor(playerid, txtInit, tcolor);
-    PlayerTextDrawSetSelectable(playerid, txtInit, 1);
-    PlayerTextDrawAlignment(playerid, txtInit, 2);
+    PlayerTextDrawColour(playerid, txtInit, tColour);
+    PlayerTextDrawSetSelectable(playerid, txtInit, true);
+    PlayerTextDrawAlignment(playerid, txtInit, TEXT_DRAW_ALIGN_CENTER);
     PlayerTextDrawTextSize(playerid, txtInit, Height, Width); // The width and height are reversed for centering.. something the game does <g>
     PlayerTextDrawShow(playerid, txtInit);
     return txtInit;
@@ -198,12 +194,12 @@ stock PlayerText:mS_CreatePlayerHeaderTextDraw(playerid, Float:Xpos, Float:Ypos,
 	new PlayerText:txtInit;
 	static head_text[128]; format(head_text, sizeof head_text, "%s", header_text);
    	txtInit = CreatePlayerTextDraw(playerid, Xpos, Ypos, head_text);
-   	PlayerTextDrawUseBox(playerid, txtInit, 0);
+   	PlayerTextDrawUseBox(playerid, txtInit, false);
 	PlayerTextDrawLetterSize(playerid, txtInit, 0.4, 1.5);
-	PlayerTextDrawFont(playerid, txtInit, 1);
+	PlayerTextDrawFont(playerid, txtInit, TEXT_DRAW_FONT_1);
 	PlayerTextDrawSetShadow(playerid, txtInit, 0);
     PlayerTextDrawSetOutline(playerid, txtInit, 0);
-    PlayerTextDrawColor(playerid, txtInit, 0xACCBF1FF);
+    PlayerTextDrawColour(playerid, txtInit, 0xACCBF1FF);
     PlayerTextDrawShow(playerid, txtInit);
     PlayerTextDrawSetString(playerid, txtInit, head_text);
     return txtInit;
@@ -211,18 +207,18 @@ stock PlayerText:mS_CreatePlayerHeaderTextDraw(playerid, Float:Xpos, Float:Ypos,
 
 //------------------------------------------------
 
-stock PlayerText:mS_CreatePlayerBGTextDraw(playerid, Float:Xpos, Float:Ypos, Float:Width, Float:Height, bgcolor)
+stock PlayerText:mS_CreatePlayerBGTextDraw(playerid, Float:Xpos, Float:Ypos, Float:Width, Float:Height, bgColour)
 {
 	new PlayerText:txtBackground = CreatePlayerTextDraw(playerid, Xpos, Ypos,"                                            ~n~"); // enough space for everyone
-    PlayerTextDrawUseBox(playerid, txtBackground, 1);
-    PlayerTextDrawBoxColor(playerid, txtBackground, bgcolor);
+    PlayerTextDrawUseBox(playerid, txtBackground, true);
+    PlayerTextDrawBoxColour(playerid, txtBackground, bgColour);
 	PlayerTextDrawLetterSize(playerid, txtBackground, 5.0, 5.0);
-	PlayerTextDrawFont(playerid, txtBackground, 0);
+	PlayerTextDrawFont(playerid, txtBackground, TEXT_DRAW_FONT_0);
 	PlayerTextDrawSetShadow(playerid, txtBackground, 0);
     PlayerTextDrawSetOutline(playerid, txtBackground, 0);
-    PlayerTextDrawColor(playerid, txtBackground,0x000000FF);
+    PlayerTextDrawColour(playerid, txtBackground,0x000000FF);
     PlayerTextDrawTextSize(playerid, txtBackground, Width, Height);
-   	PlayerTextDrawBackgroundColor(playerid, txtBackground, bgcolor);
+   	PlayerTextDrawBackgroundColour(playerid, txtBackground, bgColour);
     PlayerTextDrawShow(playerid, txtBackground);
     return txtBackground;
 }
@@ -230,16 +226,16 @@ stock PlayerText:mS_CreatePlayerBGTextDraw(playerid, Float:Xpos, Float:Ypos, Flo
 //------------------------------------------------
 // Creates a model preview sprite
 
-stock PlayerText:mS_CreateMPTextDraw(playerid, modelindex, Float:Xpos, Float:Ypos, Float:Xrot, Float:Yrot, Float:Zrot, Float:mZoom, Float:width, Float:height, bgcolor)
+stock PlayerText:mS_CreateMPTextDraw(playerid, modelindex, Float:Xpos, Float:Ypos, Float:Xrot, Float:Yrot, Float:Zrot, Float:mZoom, Float:width, Float:height, bgColour)
 {
     new PlayerText:txtPlayerSprite = CreatePlayerTextDraw(playerid, Xpos, Ypos, ""); // it has to be set with SetText later
     PlayerTextDrawFont(playerid, txtPlayerSprite, TEXT_DRAW_FONT_MODEL_PREVIEW);
-    PlayerTextDrawColor(playerid, txtPlayerSprite, 0xFFFFFFFF);
-    PlayerTextDrawBackgroundColor(playerid, txtPlayerSprite, bgcolor);
+    PlayerTextDrawColour(playerid, txtPlayerSprite, 0xFFFFFFFF);
+    PlayerTextDrawBackgroundColour(playerid, txtPlayerSprite, bgColour);
     PlayerTextDrawTextSize(playerid, txtPlayerSprite, width, height); // Text size is the Width:Height
     PlayerTextDrawSetPreviewModel(playerid, txtPlayerSprite, modelindex);
     PlayerTextDrawSetPreviewRot(playerid,txtPlayerSprite, Xrot, Yrot, Zrot, mZoom);
-    PlayerTextDrawSetSelectable(playerid, txtPlayerSprite, 1);
+    PlayerTextDrawSetSelectable(playerid, txtPlayerSprite, true);
     PlayerTextDrawShow(playerid, txtPlayerSprite);
     return txtPlayerSprite;
 }
@@ -252,12 +248,12 @@ stock PlayerText:mS_CreateMPNameTD(playerid, Float:Xpos, Float:Ypos, const itemn
     new PlayerText:txtPlayerItemName;
     static itemn[128]; format(itemn, sizeof itemn, "%s", itemname);
     txtPlayerItemName = CreatePlayerTextDraw(playerid, Xpos, Ypos, itemn);
-    PlayerTextDrawUseBox(playerid, txtPlayerItemName, 0);
+    PlayerTextDrawUseBox(playerid, txtPlayerItemName, false);
 	PlayerTextDrawLetterSize(playerid, txtPlayerItemName, 0.18, 0.8);
-	PlayerTextDrawFont(playerid, txtPlayerItemName, 1);
+	PlayerTextDrawFont(playerid, txtPlayerItemName, TEXT_DRAW_FONT_1);
 	PlayerTextDrawSetShadow(playerid, txtPlayerItemName, 0);
     PlayerTextDrawSetOutline(playerid, txtPlayerItemName, 0);
-    PlayerTextDrawColor(playerid, txtPlayerItemName, 0xACCBF1FF);
+    PlayerTextDrawColour(playerid, txtPlayerItemName, 0xACCBF1FF);
     PlayerTextDrawShow(playerid, txtPlayerItemName);
     PlayerTextDrawSetString(playerid, txtPlayerItemName, itemn);
     return txtPlayerItemName;
@@ -293,7 +289,7 @@ stock mS_DestroyPlayerMPName(playerid)
 
 stock mS_ShowPlayerMPs(playerid)
 {
-	new bgcolor = GetPVarInt(playerid, "mS_previewBGcolor");
+	new bgColour = GetPVarInt(playerid, "mS_previewBGColour");
     new x=0;
 	new Float:BaseX = mS_DIALOG_BASE_X;
 	new Float:BaseY = mS_DIALOG_BASE_Y - (mS_SPRITE_DIM_Y * 0.33); // down a bit
@@ -318,7 +314,7 @@ stock mS_ShowPlayerMPs(playerid)
 				BaseX = mS_DIALOG_BASE_X + 25.0; // in a bit from the box
 				BaseY += mS_SPRITE_DIM_Y + 1.0; // move on the Y for the next line
 			}
-			gSelectionItems[playerid][x] = mS_CreateMPTextDraw(playerid, gCustomList[playerid][itemat], BaseX, BaseY, rotzoom[0], rotzoom[1], rotzoom[2], rotzoom[3], mS_SPRITE_DIM_X, mS_SPRITE_DIM_Y, bgcolor);
+			gSelectionItems[playerid][x] = mS_CreateMPTextDraw(playerid, gCustomList[playerid][itemat], BaseX, BaseY, rotzoom[0], rotzoom[1], rotzoom[2], rotzoom[3], mS_SPRITE_DIM_X, mS_SPRITE_DIM_Y, bgColour);
 			gSelectionItemName[playerid][x] = mS_CreateMPNameTD(playerid, BaseX+2, BaseY+2, gItemName[mS_listID][itemat]);
 			gSelectionItemsTag[playerid][x] = gCustomList[playerid][itemat];
 			gSelectionItemsExtra[playerid][x] = gCustomExtraList[playerid][itemat];
@@ -344,11 +340,11 @@ stock mS_ShowPlayerMPs(playerid)
 			}
 			new rzID = gItemList[itemat][mS_ITEM_ROT_ZOOM_ID]; // avoid long line
 			if(rzID > -1) {
-				gSelectionItems[playerid][x] = mS_CreateMPTextDraw(playerid, gItemList[itemat][mS_ITEM_MODEL], BaseX, BaseY, gRotZoom[rzID][0], gRotZoom[rzID][1], gRotZoom[rzID][2], gRotZoom[rzID][3], mS_SPRITE_DIM_X, mS_SPRITE_DIM_Y, bgcolor);
+				gSelectionItems[playerid][x] = mS_CreateMPTextDraw(playerid, gItemList[itemat][mS_ITEM_MODEL], BaseX, BaseY, gRotZoom[rzID][0], gRotZoom[rzID][1], gRotZoom[rzID][2], gRotZoom[rzID][3], mS_SPRITE_DIM_X, mS_SPRITE_DIM_Y, bgColour);
 				gSelectionItemName[playerid][x] = mS_CreateMPNameTD(playerid, BaseX+2, BaseY+2, gItemName[mS_listID][itemat]);
 			}
 			else {
-				gSelectionItems[playerid][x] = mS_CreateMPTextDraw(playerid, gItemList[itemat][mS_ITEM_MODEL], BaseX, BaseY, 0.0, 0.0, 0.0, 1.0, mS_SPRITE_DIM_X, mS_SPRITE_DIM_Y, bgcolor);
+				gSelectionItems[playerid][x] = mS_CreateMPTextDraw(playerid, gItemList[itemat][mS_ITEM_MODEL], BaseX, BaseY, 0.0, 0.0, 0.0, 1.0, mS_SPRITE_DIM_X, mS_SPRITE_DIM_Y, bgColour);
 				gSelectionItemName[playerid][x] = mS_CreateMPNameTD(playerid, BaseX+2, BaseY+2, gItemName[mS_listID][itemat]);
 			}
 			gSelectionItemsTag[playerid][x] = gItemList[itemat][mS_ITEM_MODEL];
@@ -381,7 +377,7 @@ stock mS_UpdatePageTextDraw(playerid)
 
 //------------------------------------------------
 
-stock ShowModelSelectionMenu(playerid, ListID, const header_text[], dialogBGcolor = 0x1C2024FF, previewBGcolor = 0x88888899 , tdSelectionColor = 0xFFFF00AA)
+stock ShowModelSelectionMenu(playerid, ListID, const header_text[], dialogBGColour = 0x1C2024FF, previewBGColour = 0x88888899 , tdSelectionColour = 0xFFFF00AA)
 {
 	if(!(0 <= ListID < mS_TOTAL_LISTS && gLists[ListID][mS_LIST_START] != gLists[ListID][mS_LIST_END])) return 0;
 	mS_DestroySelectionMenu(playerid);
@@ -390,24 +386,24 @@ stock ShowModelSelectionMenu(playerid, ListID, const header_text[], dialogBGcolo
 	SetPVarInt(playerid, "mS_list_active", 1);
 	SetPVarInt(playerid, "mS_list_time", GetTickCount());
 
-    gBackgroundTextDrawId[playerid] = mS_CreatePlayerBGTextDraw(playerid, mS_DIALOG_BASE_X + 15.0, mS_DIALOG_BASE_Y + 20.0, mS_DIALOG_WIDTH - 15.0, mS_DIALOG_HEIGHT, dialogBGcolor);
+    gBackgroundTextDrawId[playerid] = mS_CreatePlayerBGTextDraw(playerid, mS_DIALOG_BASE_X + 15.0, mS_DIALOG_BASE_Y + 20.0, mS_DIALOG_WIDTH - 15.0, mS_DIALOG_HEIGHT, dialogBGColour);
     gHeaderTextDrawId[playerid] = mS_CreatePlayerHeaderTextDraw(playerid, mS_DIALOG_BASE_X + 25.0, mS_DIALOG_BASE_Y + 25.0, header_text);
     gCurrentPageTextDrawId[playerid] = mS_CreateCurrentPageTextDraw(playerid, mS_DIALOG_BASE_X + 25.0, mS_DIALOG_BASE_Y + 267.0);
     gNextButtonTextDrawId[playerid] = mS_CreatePlayerDialogButton(playerid, mS_DIALOG_WIDTH - 51.0, mS_DIALOG_BASE_Y+mS_DIALOG_HEIGHT + 90.0, 50.0, 16.0, mS_NEXT_TEXT, 1296911871);
     gPrevButtonTextDrawId[playerid] = mS_CreatePlayerDialogButton(playerid, mS_DIALOG_WIDTH - 111.0, mS_DIALOG_BASE_Y+mS_DIALOG_HEIGHT + 90.0, 50.0, 16.0, mS_PREV_TEXT, 1296911871);
     gCancelButtonTextDrawId[playerid] = mS_CreatePlayerDialogButton(playerid, mS_DIALOG_WIDTH - 51.0, mS_DIALOG_BASE_Y+mS_DIALOG_HEIGHT - 152.0, 50.0, 16.0, mS_CANCEL_TEXT, 0xED2F21FF, 0xFFFFFFFF);
 
-	SetPVarInt(playerid, "mS_previewBGcolor", previewBGcolor);
+	SetPVarInt(playerid, "mS_previewBGColour", previewBGColour);
     mS_ShowPlayerMPs(playerid);
     mS_UpdatePageTextDraw(playerid);
 	
-	SelectTextDraw(playerid, tdSelectionColor);
+	SelectTextDraw(playerid, tdSelectionColour);
 	return 1;
 }
 
 //------------------------------------------------------------
 
-stock ShowModelSelectionMenuEx(playerid, const items_array[], item_amount, const header_text[], extraid, Float:Xrot = 0.0, Float:Yrot = 0.0, Float:Zrot = 0.0, Float:mZoom = 1.0, dialogBGcolor = 0x4A5A6BBB, previewBGcolor = 0x88888899 , tdSelectionColor = 0xFFFF00AA)
+stock ShowModelSelectionMenuEx(playerid, const items_array[], item_amount, const header_text[], extraid, Float:Xrot = 0.0, Float:Yrot = 0.0, Float:Zrot = 0.0, Float:mZoom = 1.0, dialogBGColour = 0x4A5A6BBB, previewBGColour = 0x88888899 , tdSelectionColour = 0xFFFF00AA)
 {
 	mS_DestroySelectionMenu(playerid);
 	if(item_amount > mS_CUSTOM_MAX_ITEMS)
@@ -434,18 +430,18 @@ stock ShowModelSelectionMenuEx(playerid, const items_array[], item_amount, const
 		SetPVarInt(playerid, "mS_custom_extraid", extraid);
 		
 
-		gBackgroundTextDrawId[playerid] = mS_CreatePlayerBGTextDraw(playerid, mS_DIALOG_BASE_X + 15.0, mS_DIALOG_BASE_Y + 20.0, mS_DIALOG_WIDTH - 15.0, mS_DIALOG_HEIGHT, dialogBGcolor);
+		gBackgroundTextDrawId[playerid] = mS_CreatePlayerBGTextDraw(playerid, mS_DIALOG_BASE_X + 15.0, mS_DIALOG_BASE_Y + 20.0, mS_DIALOG_WIDTH - 15.0, mS_DIALOG_HEIGHT, dialogBGColour);
 		gHeaderTextDrawId[playerid] = mS_CreatePlayerHeaderTextDraw(playerid, mS_DIALOG_BASE_X + 25.0, mS_DIALOG_BASE_Y + 25.0, header_text);
 		gCurrentPageTextDrawId[playerid] = mS_CreateCurrentPageTextDraw(playerid, mS_DIALOG_BASE_X + 25.0, mS_DIALOG_BASE_Y + 267.0);
 		gNextButtonTextDrawId[playerid] = mS_CreatePlayerDialogButton(playerid, mS_DIALOG_WIDTH - 51.0, mS_DIALOG_BASE_Y+mS_DIALOG_HEIGHT + 90.0, 50.0, 16.0, mS_NEXT_TEXT, 1296911871);
 		gPrevButtonTextDrawId[playerid] = mS_CreatePlayerDialogButton(playerid, mS_DIALOG_WIDTH - 111.0, mS_DIALOG_BASE_Y+mS_DIALOG_HEIGHT + 90.0, 50.0, 16.0, mS_PREV_TEXT, 1296911871);
 		gCancelButtonTextDrawId[playerid] = mS_CreatePlayerDialogButton(playerid, mS_DIALOG_WIDTH - 51.0, mS_DIALOG_BASE_Y+mS_DIALOG_HEIGHT - 152.0, 50.0, 16.0, mS_CANCEL_TEXT, 0xED2F21FF, 0xFFFFFFFF);
 
-		SetPVarInt(playerid, "mS_previewBGcolor", previewBGcolor);
+		SetPVarInt(playerid, "mS_previewBGColour", previewBGColour);
 		mS_ShowPlayerMPs(playerid);
 		mS_UpdatePageTextDraw(playerid);
 		
-		SelectTextDraw(playerid, tdSelectionColor);
+		SelectTextDraw(playerid, tdSelectionColour);
 		return 1;
 	}
 	return 0;
@@ -532,14 +528,17 @@ forward MP_OPC(playerid);
 //-------------------------------------------
 // Even though only Player* textdraws are used in this script,
 // OnPlayerClickTextDraw is still required to handle ESC
-
-public OnPlayerClickTextDraw(playerid, Text:clickedid)
+#if defined _INC_textdraw_streamer
+	hook OnClickDynamicTextDraw(playerid, Text:clickedid)
+#else
+	hook OnPlayerClickTextDraw(playerid, Text:clickedid)
+#endif
 {
    	if(GetPVarInt(playerid, "mS_ignore_next_esc") == 1) {
 		SetPVarInt(playerid, "mS_ignore_next_esc", 0);
-		return CallLocalFunction("MP_OPCTD", "ii", playerid, _:clickedid);
+		return 1;
 	}
-   	if(GetPVarInt(playerid, "mS_list_active") == 0) return CallLocalFunction("MP_OPCTD", "ii", playerid, _:clickedid);
+   	if(GetPVarInt(playerid, "mS_list_active") == 0) return 1;
 
 	// Handle: They cancelled (with ESC)
 	if(clickedid == Text:INVALID_TEXT_DRAW) {
@@ -560,23 +559,18 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid)
         return 1;
 	}
 	
-	return CallLocalFunction("MP_OPCTD", "ii", playerid, _:clickedid);
+	return Y_HOOKS_CONTINUE_RETURN_1;
 }
-
-#if defined _ALS_OnPlayerClickTextDraw
-	#undef OnPlayerClickTextDraw
-#else
-	#define _ALS_OnPlayerClickTextDraw
-#endif
-#define OnPlayerClickTextDraw MP_OPCTD
-
-forward MP_OPCTD(playerid, Text:clickedid);
 
 //------------------------------------------------
 
-public OnPlayerClickPTD(playerid, PlayerText:playertextid)
+#if defined _INC_textdraw_streamer
+	hook OnClickDynamicPlayerTextDraw(playerid, PlayerText:playertextid)
+#else
+	hook OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid)
+#endif
 {
-	if(GetPVarInt(playerid, "mS_list_active") == 0 || (GetTickCount()-GetPVarInt(playerid, "mS_list_time")) < 200 /* Disable instant selection */) return CallLocalFunction("MP_OPCPTD", "ii", playerid, _:playertextid);
+	if(GetPVarInt(playerid, "mS_list_active") == 0 || (GetTickCount()-GetPVarInt(playerid, "mS_list_time")) < 200 /* Disable instant selection */) return 1;
 
 	new curpage = GetPVarInt(playerid, "mS_list_page");
 	
@@ -667,17 +661,8 @@ public OnPlayerClickPTD(playerid, PlayerText:playertextid)
 		x++;
 	}
 	
-	return CallLocalFunction("MP_OPCPTD", "ii", playerid, _:playertextid);
+	return Y_HOOKS_CONTINUE_RETURN_1;
 }
-
-#if defined _ALS_OnPlayerClickPlayerTD
-	#undef OnPlayerClickPlayerTextDraw
-#else
-	#define _ALS_OnPlayerClickPlayerTD
-#endif
-#define OnPlayerClickPlayerTextDraw MP_OPCPTD
-
-forward MP_OPCPTD(playerid, PlayerText:playertextid);
 
 //------------------------------------------------------------------
 
