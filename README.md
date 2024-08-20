@@ -5,17 +5,17 @@ This version is made by Giapp, a modified version of [this nearly original versi
 - Support [open.mp](https://github.com/openmultiplayer/open.mp)
 - Support [samp-textdraw-streamer](https://github.com/nexquery/samp-textdraw-streamer)
 
-## Images
+## IMAGES
 <img src="https://github.com/vdgiapp/mSelection/blob/main/image.png">
 
-## Installation
+## INSTALLATION
 Include in your code and begin using the library:
 
 ```pawn
 #include <mSelection>
 ```
 
-## Functions
+## FUNCTIONS
 
 ```pawn
   LoadModelSelectionMenu(f_name[]);
@@ -24,14 +24,14 @@ Include in your code and begin using the library:
   ShowModelSelectionMenuEx(playerid, items_array[], item_amount, header_text[], extraid, Xrot, Yrot, Zrot, mZoom, dialogBGcolor, previewBGcolor, tdSelectionColor);
 ```
 
-## Callbacks
+## CALLBACKS
 
 ```pawn
   OnPlayerModelSelection(playerid, response, listid, modelid);
   OnPlayerModelSelectionEx(playerid, response, extraid, modelid, extralist_id);
 ```
 
-## Usage
+## USAGE AND EXAMPLE
 - [ModelID] = "ID: 1"...
 - [VehicleName] = "NRG-500"...
 
