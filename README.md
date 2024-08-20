@@ -1,5 +1,5 @@
 # mSelection
-This version is modified by Giapp
+This version is made by Giapp, a modified version of [this nearly original version](https://github.com/alextwothousand/mSelection)
 
 - Same to mSelection but new UI and custom text
 - Support [open.mp](https://github.com/openmultiplayer/open.mp)
