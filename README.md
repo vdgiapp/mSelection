@@ -1,4 +1,6 @@
-# mSelection - Modified by Giapp
+# mSelection
+This version is modified by Giapp
+
 - Same to mSelection but new UI and custom text
 - Support [open.mp](https://github.com/openmultiplayer/open.mp)
 - Support [samp-textdraw-streamer](https://github.com/nexquery/samp-textdraw-streamer)
@@ -29,7 +31,7 @@ Include in your code and begin using the library:
   OnPlayerModelSelectionEx(playerid, response, extraid, modelid, extralist_id);
 ```
 
-## Usage:
+## Usage
 - [ModelID] = "ID: 1"...
 - [VehicleName] = "NRG-500"...
 
