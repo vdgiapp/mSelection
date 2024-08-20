@@ -6,7 +6,7 @@ This version is made by Giapp, a modified version of [this nearly original versi
 - Support [samp-textdraw-streamer](https://github.com/nexquery/samp-textdraw-streamer)
 
 ## Images
-<img src="https://github.com/vdgiapp/mSelection/blob/main/image.png" width=1280 height=1024>
+<img src="https://github.com/vdgiapp/mSelection/blob/main/image.png">
 
 ## Installation
 Include in your code and begin using the library:
