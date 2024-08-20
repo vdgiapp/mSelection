@@ -1,4 +1,4 @@
-# mSelection - Upgraded by Giapp
+# mSelection - Modified by Giapp
 - Same to mSelection but new UI and custom text
 - Support [open.mp](https://github.com/openmultiplayer/open.mp)
 - Support [samp-textdraw-streamer](https://github.com/nexquery/samp-textdraw-streamer)
