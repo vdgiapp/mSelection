@@ -29,7 +29,7 @@ Include in your code and begin using the library:
   OnPlayerModelSelectionEx(playerid, response, extraid, modelid, extralist_id);
 ```
 
-## Example:
+## Usage:
 - [ModelID] = "ID: 1"...
 - [VehicleName] = "NRG-500"...
 
