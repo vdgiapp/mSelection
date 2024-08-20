@@ -5,7 +5,7 @@
 	Model Selection using previews. For SA-MP 0.3x and above.
 	- D0erfler 2013
 	- Kye 2013
-	Version 1.1 R3 - Upgraded by Giapp
+	Version 1.1 - Modified by Giapp
 */
 
 #tryinclude <YSI_Coding\y_hooks>
