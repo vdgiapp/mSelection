@@ -6,8 +6,8 @@
 ## Images
 ![Image](https://i.imgur.com/qR4qREp.png)
 
-## Include
-Include mSelection.inc in your gamemode and easily using it:
+## Installation
+Include in your code and begin using the library:
 
 ```pawn
 #include <mSelection>
